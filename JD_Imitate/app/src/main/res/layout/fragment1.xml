@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <wangyuhang.bwie.com.jd_imitate.view.activity.ShouYe_SouSuo_view
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            ></wangyuhang.bwie.com.jd_imitate.view.activity.ShouYe_SouSuo_view>
+    <com.youth.banner.Banner
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:id="@+id/iv"
+        android:layout_marginTop="8dp"
+        />
+    <GridView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/gv"
+        android:numColumns="5"
+        android:layout_weight="3"
+        ></GridView>
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textColor="#FF7F00"
+            android:id="@+id/tv1"
+            />
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/rl1"
+        android:layout_weight="2"
+        android:layout_marginTop="10dp"
+        ></android.support.v7.widget.RecyclerView>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:src="@mipmap/tuijian_03"
+        android:scaleType="fitXY"
+        />
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="6"
+        android:id="@+id/rl2"
+        ></android.support.v7.widget.RecyclerView>
+    </LinearLayout>
+</ScrollView>
+</LinearLayout>

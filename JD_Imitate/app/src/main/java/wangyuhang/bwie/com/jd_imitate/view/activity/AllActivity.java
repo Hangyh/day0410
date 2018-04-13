@@ -30,7 +30,8 @@ public class AllActivity extends AppCompatActivity {
 
     private ViewPager mVp;
     private RadioGroup mRg;
-
+    private static final float DEFAULT_OFFSET = 0.5f;
+    private float mInitLazyItemOffset = DEFAULT_OFFSET;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,7 +87,7 @@ public class AllActivity extends AppCompatActivity {
                 }
             }
         });
-        mVp.setOffscreenPageLimit(1);
+        mVp.setOffscreenPageLimit(6);
     }
 
     private void initView() {

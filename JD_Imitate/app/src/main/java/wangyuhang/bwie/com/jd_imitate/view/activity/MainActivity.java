@@ -13,7 +13,6 @@ import wangyuhang.bwie.com.jd_imitate.base.BaseActivity;
 import wangyuhang.bwie.com.jd_imitate.base.BasePresenter;
 
 import static android.R.id.edit;
-import static wangyuhang.bwie.com.jd_imitate.R.id.i;
 
 public class MainActivity extends BaseActivity {
 

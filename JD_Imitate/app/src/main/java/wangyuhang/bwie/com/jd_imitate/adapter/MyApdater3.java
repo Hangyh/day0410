@@ -16,6 +16,8 @@ import java.util.List;
 import wangyuhang.bwie.com.jd_imitate.R;
 import wangyuhang.bwie.com.jd_imitate.bean.ShowBean;
 
+import static android.os.Build.VERSION_CODES.O;
+
 
 /**
  * Created by dell on 2018/3/17.
@@ -39,16 +41,37 @@ public class MyApdater3 extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         View view;
         if (viewType==TYPE_PULL_IMAGE){
             view = LayoutInflater.from(context).inflate(R.layout.ritem,parent,false);
-
-            return new MyViewHoler1(view);
+            final MyViewHoler1 myViewHoler1 = new MyViewHoler1(view);
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int layoutPosition = myViewHoler1.getLayoutPosition();
+                    setOnItemListenner2.setOnItemclckListenner(layoutPosition);
+                }
+            });
+            return myViewHoler1;
         }else if (viewType==TYPE_RIGHT_IMAGE){
             view = LayoutInflater.from(context).inflate(R.layout.ritem2,parent,false);
-
-            return new MyViewHoler2(view);
+            final MyViewHoler2 myViewHoler2 = new MyViewHoler2(view);
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int layoutPosition = myViewHoler2.getLayoutPosition();
+                    setOnItemListenner2.setOnItemclckListenner(layoutPosition);
+                }
+            });
+            return myViewHoler2;
         }else {
             view = LayoutInflater.from(context).inflate(R.layout.ritem3,parent,false);
-
-            return new MyViewHoler3(view);
+            final MyViewHoler3 myViewHoler3 = new MyViewHoler3(view);
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int layoutPosition = myViewHoler3.getLayoutPosition();
+                    setOnItemListenner2.setOnItemclckListenner(layoutPosition);
+                }
+            });
+            return myViewHoler3;
         }
 
     }
@@ -164,5 +187,14 @@ public class MyApdater3 extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
             imageView2 = itemView.findViewById(R.id.rl_iv33);
             imageView3 = itemView.findViewById(R.id.rl_iv333);
         }
+    }
+
+    public interface setOnItemListennert{
+        void setOnItemclckListenner(int position);
+    }
+    setOnItemListennert setOnItemListenner2;
+
+    public void setListenner(setOnItemListennert listenner){
+        setOnItemListenner2 = listenner;
     }
 }

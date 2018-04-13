@@ -48,15 +48,22 @@ public class ZiFenLeiXiangQingActivity extends BaseActivity<IPresenter> implemen
     @Override
     public void OnSuccess(ZiFenLeiInfo ziFenLeiInfo) {
 
-        List<ZiFenLeiInfo.DataBean> data = ziFenLeiInfo.getData();
+        final List<ZiFenLeiInfo.DataBean> data = ziFenLeiInfo.getData();
         IAdapter iAdapter=new IAdapter(ZiFenLeiXiangQingActivity.this,data);
         mRlv.setAdapter(iAdapter);
         iAdapter.getCidListener(new IAdapter.setUrl() {
             @Override
-            public void OnSuccess(String url) {
+            public void OnSuccess(int position) {
+//                int pscid = data.get(position).getPscid();
+                int pid = data.get(position).getPid();
+                String detailUrl = data.get(position).getDetailUrl();
+                double price = data.get(position).getPrice();
                 Intent intent=new Intent();
                 Bundle bundle=new Bundle();
-                bundle.putString("url",url);
+                bundle.putString("price",price+"");
+                bundle.putString("url",detailUrl);
+                bundle.putInt("pid",pid);
+//                bundle.
                 intent.putExtras(bundle);
                 intent.setClass(ZiFenLeiXiangQingActivity.this, WebViewActivity.class);
                 startActivity(intent);

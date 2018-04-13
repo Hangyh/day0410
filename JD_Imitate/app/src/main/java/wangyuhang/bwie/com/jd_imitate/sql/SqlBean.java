@@ -9,9 +9,8 @@ public class SqlBean {
     private String name;
 
     public SqlBean(String name) {
-
+        this.name = name;
     }
-
 
     public String getName() {
         return name;

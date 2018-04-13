@@ -55,12 +55,23 @@ public class SouShuoActivity extends BaseActivity<ShowPrensenterSou> implements 
 
     @Override
     public void showDataSuccess(ShowBean showBean) {
-        List<ShowBean.DataBean> list = showBean.getData();
+        final List<ShowBean.DataBean> list = showBean.getData();
         final MyApdater3 myApdater = new MyApdater3(list,SouShuoActivity.this);
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 rl.setAdapter(myApdater);
+            }
+        });
+
+        myApdater.setListenner(new MyApdater3.setOnItemListennert() {
+            @Override
+            public void setOnItemclckListenner(int position) {
+                String detailUrl = list.get(position).getDetailUrl();
+
+                Intent intent = new Intent(SouShuoActivity.this,WebView_SouSuo.class);
+                intent.putExtra("sousuourl",detailUrl);
+                startActivity(intent);
             }
         });
 

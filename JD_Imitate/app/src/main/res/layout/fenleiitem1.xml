@@ -9,7 +9,6 @@
         android:layout_height="70dp"
         android:gravity="center"
         android:id="@+id/fltext"
-        android:textColor="@drawable/textviewsel"
         />
 
 </LinearLayout>

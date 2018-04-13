@@ -40,6 +40,7 @@ import wangyuhang.bwie.com.jd_imitate.presenter.UsetPrensenter;
 import wangyuhang.bwie.com.jd_imitate.view.UpdateView;
 import wangyuhang.bwie.com.jd_imitate.view.UserView;
 
+import static wangyuhang.bwie.com.jd_imitate.R.drawable.s2;
 import static wangyuhang.bwie.com.jd_imitate.R.mipmap.s;
 
 
@@ -169,16 +170,16 @@ public class UserActivity extends BaseActivity<UsetPrensenter> implements UserVi
             @Override
             public void onClick(View v) {
                 final View view2 = View.inflate(UserActivity.this,R.layout.alert,null);
-
+//
                new AlertDialog.Builder(UserActivity.this)
                 .setTitle("修改昵称")
                 .setView(view2)
                 .setPositiveButton("确定",new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
+//
                         EditText viewById = view2.findViewById(R.id.et_name);
-
+//
                      final  String s2 = viewById.getText().toString();
                       Log.d("++++++++++++",s2+"");
 

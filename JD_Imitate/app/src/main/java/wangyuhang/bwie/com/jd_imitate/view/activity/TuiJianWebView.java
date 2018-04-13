@@ -3,6 +3,7 @@ package wangyuhang.bwie.com.jd_imitate.view.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -20,7 +21,8 @@ public class TuiJianWebView extends AppCompatActivity {
 
         Intent intent = getIntent();
         String weburl = intent.getStringExtra("weburl");
-
+        WebSettings settings = mTuijianWv.getSettings();
+        settings.setJavaScriptEnabled(true);
         mTuijianWv.setWebViewClient(new WebViewClient());
         mTuijianWv.loadUrl(weburl);
 

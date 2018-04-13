@@ -57,15 +57,26 @@ public class Fragment3 extends Fragment implements FenView,FenView2 {
 
     @Override
     public void OnSuccess(FenLei fenLei) {
-        List<FenLei.DataBean> data = fenLei.getData();
-        FenAdapter fenAdapter=new FenAdapter(getActivity(),data);
+        final List<FenLei.DataBean> data = fenLei.getData();
+        final FenAdapter fenAdapter=new FenAdapter(getActivity(),data);
         mRlv.setAdapter(fenAdapter);
-        fenAdapter.getDanJi(new FenAdapter.DanJi() {
+        fenAdapter.setBianse(new FenAdapter.Bianse() {
             @Override
-            public void OnSuccess(int cid) {
+            public void bianse(int position) {
+                int cid = data.get(position).getCid();
                 fenPresenter2.getFenPresenter(url2+cid);
+                fenAdapter.setThisPosition(position);
+                fenAdapter.notifyDataSetChanged();
             }
         });
+//        fenAdapter.getDanJi(new FenAdapter.DanJi() {
+//            @Override
+//            public void OnSuccess(int cid) {
+//                fenPresenter2.getFenPresenter(url2+cid);
+////                fenAdapter.setThisPosition(cid);
+////                fenAdapter.notifyDataSetChanged();
+//            }
+//        });
     }
     @Override
     public void OnSuccess(ErJiLieBiao erJiLieBiao) {

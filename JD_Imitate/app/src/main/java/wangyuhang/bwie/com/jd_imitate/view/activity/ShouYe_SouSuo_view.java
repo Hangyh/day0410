@@ -11,7 +11,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import com.journeyapps.barcodescanner.CaptureActivity;
+
+import com.xys.libzxing.zxing.activity.CaptureActivity;
 
 import wangyuhang.bwie.com.jd_imitate.R;
 
@@ -44,6 +45,7 @@ public class ShouYe_SouSuo_view extends RelativeLayout {
                 context.startActivity(intent);
             }
         });
+
     }
 
 

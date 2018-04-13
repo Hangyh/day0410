@@ -100,10 +100,13 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
         edit = sharedPreferences.edit();
         edit.putInt("uid",loginBean.getData().getUid());
         edit.putString("token",loginBean.getData().getToken());
+//        edit.putString("uname",loginBean.getData().getNickname()+"");
         Log.i("TAG",loginBean.getData().getUid()+"");
         Log.i("TAG",loginBean.getData().getToken()+"");
         edit.commit();
-        startActivity(new Intent(LoginActivity.this, UserActivity.class));
+        startActivity(new Intent(LoginActivity.this, AllActivity.class));
+        Toast.makeText(this, ""+loginBean.getMsg(), Toast.LENGTH_SHORT).show();
+//        finish();
     }
     public static boolean isPassword(String password) {
         return Pattern.matches(a, password);

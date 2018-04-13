@@ -38,7 +38,7 @@ public class IAdapter extends RecyclerView.Adapter<IAdapter.IViewHolder>{
     }
 
     @Override
-    public void onBindViewHolder(IViewHolder holder, int position) {
+    public void onBindViewHolder(IViewHolder holder, final int position) {
         ZiFenLeiInfo.DataBean dataBean = data.get(position);
         String images = dataBean.getImages();
         String[] split = images.split("\\|");
@@ -50,7 +50,7 @@ public class IAdapter extends RecyclerView.Adapter<IAdapter.IViewHolder>{
             @Override
             public void onClick(View view) {
                 if(setUrl!=null){
-                    setUrl.OnSuccess(detailUrl);
+                    setUrl.OnSuccess(position);
 
                 }
             }
@@ -77,7 +77,7 @@ public class IAdapter extends RecyclerView.Adapter<IAdapter.IViewHolder>{
 
     public interface setUrl{
 
-        void OnSuccess(String pscid);
+        void OnSuccess(int position);
     }
    setUrl setUrl;
     public void getCidListener(setUrl setUrl){

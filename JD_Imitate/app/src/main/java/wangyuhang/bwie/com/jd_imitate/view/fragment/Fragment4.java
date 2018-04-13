@@ -59,8 +59,8 @@ public class Fragment4 extends BaseFragment implements Iview {
      */
     private TextView mTvNum;
     private MyAdapter adapter;
-    private List<DatasBean> groupList = new ArrayList<>();
-    private List<List<DatasBean.ListBean>> childList = new ArrayList<>();
+    private List<DatasBean> groupList;
+    private List<List<DatasBean.ListBean>> childList;
     private String pid;
     private DelPresenter delPresenter;
 
@@ -78,8 +78,6 @@ public class Fragment4 extends BaseFragment implements Iview {
         delPresenter = new DelPresenter();
         delPresenter.attachView(this);
 //        initView();
-        adapter = new MyAdapter(getActivity(), groupList, childList);
-        mElv.setAdapter(adapter);
 
 
         mCheckbox2.setOnClickListener(new View.OnClickListener() {
@@ -97,7 +95,17 @@ public class Fragment4 extends BaseFragment implements Iview {
     }
 
     @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        EventBus.getDefault().register(this);
+    }
+
+
+
+    @Override
     public void onSuccess(Object o) {
+        groupList = new ArrayList<>();
+        childList = new ArrayList<>();
         if(o!=null){
             List<DatasBean> list = (List<DatasBean> )o;
             if(list!=null){
@@ -106,6 +114,8 @@ public class Fragment4 extends BaseFragment implements Iview {
                     List<DatasBean.ListBean> datas = list.get(i).getList();
                     childList.add(datas);
                 }
+                adapter = new MyAdapter(getActivity(), groupList, childList);
+                mElv.setAdapter(adapter);
 
                 adapter.notifyDataSetChanged();
                 mCheckbox2.setChecked(true);
@@ -129,14 +139,6 @@ public class Fragment4 extends BaseFragment implements Iview {
     public void delSuccess(MessageBean listMessageBean) {
         Toast.makeText(getActivity(),listMessageBean.getMsg(),Toast.LENGTH_SHORT).show();
     }
-//
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        presenter.getData(uid,pid);
-//
-//    }
-
 
     @Override
     public void onResume() {
@@ -149,17 +151,16 @@ public class Fragment4 extends BaseFragment implements Iview {
         mCheckbox2.setChecked(event.isChecked());
     }
 
-    @Subscribe
+    @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(PriceAndCountEvent event) {
         mTvNum.setText("结算(" + event.getCount() + ")");
         mTvPrice.setText("￥"+event.getPrice() );
     }
-    @Subscribe
+    @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(SomeId event) {
         pid = event.getPid();
         Log.e("zxz","我得到了pid:"+pid);
         delPresenter.getData(uid,pid);
-
 
     }
 

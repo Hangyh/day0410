@@ -101,7 +101,7 @@ public class ErJiLieBiaoAdapter extends BaseExpandableListAdapter {
            cViewHolder= (cViewHolder) convertView.getTag();
        }
             //绑定
-        List<ErJiLieBiao.DataBean.ListBean> list = data.get(groupPosition).getList();
+        final List<ErJiLieBiao.DataBean.ListBean> list = data.get(groupPosition).getList();
 
         cViewHolder.rlv.setLayoutManager(new GridLayoutManager(context,3));
 
@@ -110,6 +110,7 @@ public class ErJiLieBiaoAdapter extends BaseExpandableListAdapter {
         myAdaptera.getCidListener(new MyAdaptera.setCid() {
             @Override
             public void OnSuccess(int pscid) {
+//                list.get(pscid).getPscid()
                 Toast.makeText(context,""+pscid,Toast.LENGTH_LONG).show();
                 Intent intent=new Intent();
                 Bundle bundle=new Bundle();

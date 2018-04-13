@@ -26,6 +26,8 @@ public abstract class BaseFragment extends Fragment{
         return view;
     }
 
+
+
     protected abstract void ininView(View view);
 
     public abstract int getFargementLayout();

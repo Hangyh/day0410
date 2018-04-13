@@ -16,7 +16,6 @@ import rx.schedulers.Schedulers;
 import wangyuhang.bwie.com.jd_imitate.base.BaseURL;
 import wangyuhang.bwie.com.jd_imitate.bean.XiuGaiBean;
 
-import static wangyuhang.bwie.com.jd_imitate.R.id.i;
 
 /**
  * Created by dell on 2018/3/28.

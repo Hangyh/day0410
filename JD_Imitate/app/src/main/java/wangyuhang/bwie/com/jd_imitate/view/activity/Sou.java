@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.fynn.fluidlayout.FluidLayout;
 
@@ -33,6 +34,9 @@ public class Sou extends  BaseActivity {
     private EditText editText;
     private SqlDao sqlDao;
     private ListView listView;
+    private TextView textView;
+    private ListView_Lisi listView_lisi;
+
     @Override
     public int getLayout() {
         return R.layout.activity_sou;
@@ -49,6 +53,7 @@ public class Sou extends  BaseActivity {
         fluid = (FluidLayout) findViewById(R.id.fluid);
         editText = (EditText) findViewById(R.id.et_sou);
         listView = (ListView) findViewById(R.id.lv_lisi);
+        textView = (TextView) findViewById(R.id.tv_clear);
         for (int x = 0; x < arrs.length; x++) {
             Button tv = new Button(this);
             tv.setText(arrs[x]);
@@ -58,13 +63,30 @@ public class Sou extends  BaseActivity {
             params.setMargins(3, 3, 3, 3);
             fluid.addView(tv, params);
         }
-
+        final List<SqlBean> sele = sqlDao.sele();
+        Log.i("+++++++++++",sele.size()+"");
+        listView_lisi = new ListView_Lisi(sele,Sou.this);
+        listView.setAdapter(listView_lisi);
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sqlDao.delete();
+                List<SqlBean> sele1 = sqlDao.sele();
+                listView_lisi = new ListView_Lisi(sele1,Sou.this);
+                listView.setAdapter(listView_lisi);
+                listView_lisi.notifyDataSetChanged();
+            }
+        });
     }
 
     public void shousuo(View view) {
         String s = editText.getText().toString();
         Log.i("------------>",s+"asddas");
-        sqlDao.add(editText.getText().toString()+"asddas");
+        sqlDao.add(s);
+        List<SqlBean> sele1 = sqlDao.sele();
+        listView_lisi = new ListView_Lisi(sele1,Sou.this);
+        listView.setAdapter(listView_lisi);
+        listView_lisi.notifyDataSetChanged();
         Intent intent = new Intent(Sou.this,SouShuoActivity.class);
         intent.putExtra("et",s);
         startActivity(intent);
@@ -74,14 +96,6 @@ public class Sou extends  BaseActivity {
     @Override
     public void getData() {
         super.getData();
-        List<SqlBean> sele = sqlDao.sele();
-        Log.i("+++++++++++",sele.size()+"");
-        final ListView_Lisi listView_lisi = new ListView_Lisi(sele,Sou.this);
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                listView.setAdapter(listView_lisi);
-            }
-        });
+
     }
 }

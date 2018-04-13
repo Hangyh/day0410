@@ -366,15 +366,15 @@ public class MyAdapter extends BaseExpandableListAdapter {
         EventBus.getDefault().post(compute());
         notifyDataSetChanged();
     }
-
-    public interface JieKListenner{
-        void compute();
-
-        void priceAndCountEvent(PriceAndCountEvent priceAndCountEvent);
-
-        void someId(SomeId someId);
-
-        void messageEvent(MessageEvent messageEvent);
-
-    }
+//
+//    public interface JieKListenner{
+//        void compute();
+//
+//        void priceAndCountEvent(PriceAndCountEvent priceAndCountEvent);
+//
+//        void someId(SomeId someId);
+//
+//        void messageEvent(MessageEvent messageEvent);
+//
+//    }
 }

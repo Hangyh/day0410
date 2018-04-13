@@ -14,7 +14,6 @@ import java.util.List;
 import wangyuhang.bwie.com.jd_imitate.R;
 import wangyuhang.bwie.com.jd_imitate.fenlei.bean.FenLei;
 
-import static wangyuhang.bwie.com.jd_imitate.R.id.i;
 
 
 /**
@@ -38,17 +37,21 @@ public class FenAdapter extends RecyclerView.Adapter<FenAdapter.FenViewHodler> {
     public FenAdapter(Context context, List<FenLei.DataBean> data) {
         this.context = context;
         this.data = data;
-//        isClicks = new ArrayList<>();
-//        for(int i = 0;i<data.size();i++){
-//            isClicks.add(false);
-//        }
+
     }
 
     @Override
     public FenViewHodler onCreateViewHolder(ViewGroup parent, int viewType) {
         inflate = LayoutInflater.from(context).inflate(R.layout.fenleiitem1, parent, false);
-        FenViewHodler fenViewHodler=new FenViewHodler(inflate);
+        final FenViewHodler fenViewHodler=new FenViewHodler(inflate);
+        inflate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int layoutPosition = fenViewHodler.getLayoutPosition();
 
+                bianse2.bianse(layoutPosition);
+            }
+        });
         return fenViewHodler;
     }
 //    public void setfenLei(List<FenLei.DataBean> datas){
@@ -60,6 +63,11 @@ public class FenAdapter extends RecyclerView.Adapter<FenAdapter.FenViewHodler> {
         String name = dataBean.getName();
         final int cid = dataBean.getCid();
         holder.textView.setText(name);
+        if (position == getthisPosition()) {
+            holder.textView.setTextColor(Color.RED);
+        } else {
+            holder.textView.setTextColor(Color.BLACK);
+        }
 //        fenLei  = data.get(position);
 //        if(){
 //
@@ -67,15 +75,16 @@ public class FenAdapter extends RecyclerView.Adapter<FenAdapter.FenViewHodler> {
 //        }else{
 //            holder.textView.setTextColor(Color.parseColor("#000000"));
 //        }
-        inflate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-            if(danJi!=null){
-                danJi.OnSuccess(cid);
-
-            }
-            }
-        });
+//        inflate.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//            if(danJi!=null){
+//
+//                danJi.OnSuccess(cid);
+//
+//            }
+//            }
+//        });
 
     }
 
@@ -94,14 +103,23 @@ public class FenAdapter extends RecyclerView.Adapter<FenAdapter.FenViewHodler> {
             textView = (TextView) itemView.findViewById(R.id.fltext);
         }
     }
-    public interface DanJi{
+//    public interface DanJi{
+//
+//        void OnSuccess(int cid);
+//
+//    }
+//    DanJi danJi;
+//    public void getDanJi(DanJi danJi){
+//        this.danJi=danJi;
+//    }
 
-        void OnSuccess(int cid);
 
+    public interface  Bianse{
+        void  bianse(int position);
     }
-    DanJi danJi;
-    public void getDanJi(DanJi danJi){
-        this.danJi=danJi;
-    }
+    Bianse bianse2;
 
+    public void setBianse(Bianse bianse){
+        bianse2 = bianse;
+    }
 }

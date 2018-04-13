@@ -31,7 +31,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="15sp"
-                android:text="扫啊扫"/>
+                android:text="扫一扫"/>
         </LinearLayout>
 
         <LinearLayout
@@ -60,7 +60,7 @@
                 android:textSize="15dp"
                 android:lines="1"
                 android:ellipsize="end"
-                android:text="运动户外超级品牌类日 跨店铺跨店铺"
+                android:text="宇航交通建设有限公司"
                 />
             <ImageView
                 android:layout_marginRight="5dp"

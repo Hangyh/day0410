@@ -20,14 +20,6 @@ import java.util.List;
 import wangyuhang.bwie.com.jd_imitate.R;
 import wangyuhang.bwie.com.jd_imitate.bean.ZiLeiBean;
 import wangyuhang.bwie.com.jd_imitate.fenlei.activity.ZiFenLeiXiangQingActivity;
-import wangyuhang.bwie.com.jd_imitate.fenlei.adapter.MyAdaptera;
-
-import static android.R.attr.data;
-import static wangyuhang.bwie.com.jd_imitate.R.id.gv;
-import static wangyuhang.bwie.com.jd_imitate.R.id.i;
-import static wangyuhang.bwie.com.jd_imitate.R.id.packed;
-import static wangyuhang.bwie.com.jd_imitate.R.mipmap.g;
-import static wangyuhang.bwie.com.jd_imitate.view.activity.LoginActivity.a;
 
 
 /**

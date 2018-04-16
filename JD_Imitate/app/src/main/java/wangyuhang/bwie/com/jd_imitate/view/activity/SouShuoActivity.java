@@ -68,8 +68,12 @@ public class SouShuoActivity extends BaseActivity<ShowPrensenterSou> implements 
             @Override
             public void setOnItemclckListenner(int position) {
                 String detailUrl = list.get(position).getDetailUrl();
+                double price = list.get(position).getPrice();
+                int pid = list.get(position).getPid();
 
                 Intent intent = new Intent(SouShuoActivity.this,WebView_SouSuo.class);
+                intent.putExtra("pid",pid+"");
+                intent.putExtra("price",price+"");
                 intent.putExtra("sousuourl",detailUrl);
                 startActivity(intent);
             }
@@ -90,8 +94,8 @@ public class SouShuoActivity extends BaseActivity<ShowPrensenterSou> implements 
     @Override
     public void initView() {
         Intent intent = getIntent();
-        String et = intent.getStringExtra("et");
-
+//        String et = intent.getStringExtra("et");
+        String goodsname = intent.getStringExtra("goodsname");
         sv = (EditText) findViewById(R.id.et_sousuo);
         rl = (RecyclerView) findViewById(R.id.rl);
         bt_qie = (Button) findViewById(R.id.bt_qie);
@@ -104,7 +108,7 @@ public class SouShuoActivity extends BaseActivity<ShowPrensenterSou> implements 
 
         SharedPreferences sp = getSharedPreferences("sp", 0);
         final String token = sp.getString("token",null);
-        presenter.showP("android",et,page);
+        presenter.showP("android",goodsname,page);
         bt_huan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

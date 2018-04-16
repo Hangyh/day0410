@@ -12,8 +12,6 @@ import wangyuhang.bwie.com.jd_imitate.R;
 import wangyuhang.bwie.com.jd_imitate.base.BaseActivity;
 import wangyuhang.bwie.com.jd_imitate.base.BasePresenter;
 
-import static android.R.id.edit;
-
 public class MainActivity extends BaseActivity {
 
     Handler handler = new Handler() {
@@ -62,6 +60,7 @@ public class MainActivity extends BaseActivity {
                         i--;
                         if (i < 0) {
                             timer.cancel();
+
                         }
                     }
                 }, 0, 1000);

@@ -5,18 +5,14 @@ package wangyuhang.bwie.com.jd_imitate.view.activity;
  */
 
 import android.view.View;
-
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-
 import wangyuhang.bwie.com.jd_imitate.R;
-
 /**
  * Created by dell on 2018/3/14.
  */

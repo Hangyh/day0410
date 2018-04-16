@@ -36,17 +36,17 @@ public class AddModel {
                 .addInterceptor(httpLoggingInterceptor)
                 .build();
         Retrofit retrofit = new Retrofit.Builder()
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .baseUrl("https://www.zhaoapi.cn/")
                 .client(okHttpClient)
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build();
 
         ApiService apiService = retrofit.create(ApiService.class);
 
         HashMap<String, String> hashmap = new HashMap<>();
         //uid=71&addr=北京市昌平区金域国际1-1-1&mobile=18612991023&name=kson
-        hashmap.put("token","android");
+        hashmap.put("source","android");
         hashmap.put("uid",uid);
         hashmap.put("addr",addr);
         hashmap.put("mobile",mobile);
@@ -64,7 +64,7 @@ public class AddModel {
                     @Override
                     public void onError(Throwable e) {
 
-                        Log.e("erro",e.getMessage());
+                        Log.e("-------------",e.getMessage());
 
                     }
 

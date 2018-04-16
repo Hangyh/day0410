@@ -1,6 +1,8 @@
 package wangyuhang.bwie.com.jd_imitate.view.fragment;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -37,6 +39,7 @@ import wangyuhang.bwie.com.jd_imitate.gwc.adapter.MyAdapter_Gwc;
 import wangyuhang.bwie.com.jd_imitate.gwc.bean.GwcBean;
 import wangyuhang.bwie.com.jd_imitate.gwc.presenter.GwcPresenter;
 import wangyuhang.bwie.com.jd_imitate.gwc.view.GwcView;
+import wangyuhang.bwie.com.jd_imitate.view.activity.MainActivity;
 
 
 /**
@@ -63,8 +66,8 @@ public class Fragment4 extends BaseFragment implements Iview {
     private List<List<DatasBean.ListBean>> childList;
     private String pid;
     private DelPresenter delPresenter;
-
-
+    private String [] item = {"微信","支付宝"};
+    int index;
     @Override
     protected void ininView(View view) {
         mElv = (ExpandableListView) view.findViewById(R.id.elv);
@@ -78,7 +81,31 @@ public class Fragment4 extends BaseFragment implements Iview {
         delPresenter = new DelPresenter();
         delPresenter.attachView(this);
 //        initView();
+        mTvNum.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Toast.makeText(
+//  getActivity(), "asdasdasdas", Toast.LENGTH_SHORT).show();
+                new AlertDialog.Builder(getActivity())
+                         .setTitle("请选择")
+                         .setSingleChoiceItems(item, index, new DialogInterface.OnClickListener() {
+              @Override
+              public void onClick(DialogInterface dialog, int which) {
+                                      index = which;
+                                   }
+          })
+                     .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+              @Override
+              public void onClick(DialogInterface dialog, int which) {
+                                       Toast.makeText(getActivity(), "选择了"+item[index], Toast.LENGTH_SHORT).show();
+                                     }
+       })
+                       .setNegativeButton("取消",null)
+                         .create()
+                         .show();
 
+            }
+        });
 
         mCheckbox2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -173,12 +200,4 @@ public class Fragment4 extends BaseFragment implements Iview {
         }
     }
 
-    //    @Override
-//    protected void onDestroy() {
-//        super.onDestroy();
-//        EventBus.getDefault().unregister(this);
-//        if (presenter != null) {
-//            presenter.detachView();
-//        }
-//    }
 }

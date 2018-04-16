@@ -14,13 +14,9 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import java.util.List;
 
 
-import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
-import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
+
 import wangyuhang.bwie.com.jd_imitate.R;
 import wangyuhang.bwie.com.jd_imitate.faxian.bean.FaxianBean;
-import static android.R.attr.data;
-import static android.R.attr.value;
-import static android.R.id.list;
 
 /**
  * Created by dell on 2018/4/10.

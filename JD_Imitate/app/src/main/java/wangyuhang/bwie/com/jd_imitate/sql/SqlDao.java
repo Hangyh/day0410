@@ -30,6 +30,7 @@ public class SqlDao {
         ContentValues values = new ContentValues();
         values.put("name",name);
         db.insert("aaa",null,values);
+//        db.close();
     }
 
     public List<SqlBean> sele(){
@@ -43,10 +44,13 @@ public class SqlDao {
             String name = cursor.getString(cursor.getColumnIndex("name"));
             list.add( new SqlBean(name));
         }
+        cursor.close();
+//        db.close();
         return list;
     }
 
     public void delete(){
         db.execSQL("delete from aaa");
+//        db.close();
     }
 }

@@ -68,23 +68,7 @@ public class FenAdapter extends RecyclerView.Adapter<FenAdapter.FenViewHodler> {
         } else {
             holder.textView.setTextColor(Color.BLACK);
         }
-//        fenLei  = data.get(position);
-//        if(){
-//
-//            holder.textView.setTextColor(Color.parseColor("#f00f00"));
-//        }else{
-//            holder.textView.setTextColor(Color.parseColor("#000000"));
-//        }
-//        inflate.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//            if(danJi!=null){
-//
-//                danJi.OnSuccess(cid);
-//
-//            }
-//            }
-//        });
+
 
     }
 
@@ -103,16 +87,6 @@ public class FenAdapter extends RecyclerView.Adapter<FenAdapter.FenViewHodler> {
             textView = (TextView) itemView.findViewById(R.id.fltext);
         }
     }
-//    public interface DanJi{
-//
-//        void OnSuccess(int cid);
-//
-//    }
-//    DanJi danJi;
-//    public void getDanJi(DanJi danJi){
-//        this.danJi=danJi;
-//    }
-
 
     public interface  Bianse{
         void  bianse(int position);

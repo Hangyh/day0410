@@ -8,6 +8,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/rb_shezi"
+        android:focusable="false"
+        android:clickable="true"
         />
         <!--<RadioGroup-->
             <!--android:layout_width="match_parent"-->

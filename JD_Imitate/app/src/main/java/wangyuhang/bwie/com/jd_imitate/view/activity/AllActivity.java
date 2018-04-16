@@ -1,6 +1,5 @@
 package wangyuhang.bwie.com.jd_imitate.view.activity;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.v4.app.Fragment;
@@ -23,7 +22,6 @@ import wangyuhang.bwie.com.jd_imitate.view.fragment.Fragment5;
 
 
 import static wangyuhang.bwie.com.jd_imitate.R.id.rg;
-import static wangyuhang.bwie.com.jd_imitate.R.mipmap.s;
 
 public class AllActivity extends AppCompatActivity {
 
@@ -47,10 +45,7 @@ public class AllActivity extends AppCompatActivity {
         list.add(new Fragment3());
         list.add(new Fragment4());
         list.add(new Fragment5());
-        //ViewPage+Fragment
-//        SharedPreferences sharedPreferences = getSharedPreferences("",MODE_APPEND);
-//        SharedPreferences.Editor edit = sharedPreferences.edit();
-//        edit.pu
+
 
         mVp.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override

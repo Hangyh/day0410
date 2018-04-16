@@ -81,8 +81,7 @@ public class Fragment1 extends Fragment implements ShowView {
         bn = view.findViewById(R.id.iv);
         gv = view.findViewById(R.id.gv);
         tv_tiao = view.findViewById(R.id.tv_tiao);
-//        sous  = view.findViewById(R.id.sousuo);
-//        et = view.findViewById(R.id.et);
+
         tv_tiao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,7 +96,7 @@ public class Fragment1 extends Fragment implements ShowView {
 //        });
 //扫描二维码
         imageView = view.findViewById(R.id.head_sys);
-
+//
 //        getActivity().runOnUiThread(new Runnable() {
 //            @Override
 //            public void run() {
@@ -179,7 +178,7 @@ public class Fragment1 extends Fragment implements ShowView {
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
-//                tv1.setText(ms2HMS(time));
+
                 rl1.setAdapter(myAdapter1);
                 rl2.setAdapter(myAdapter2);
                 bn.start();

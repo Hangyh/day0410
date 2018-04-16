@@ -28,4 +28,10 @@ public class AddBean {
     public void setCode(String code) {
         this.code = code;
     }
+    /**
+     * msg : 添加成功
+     * code : 0
+     */
+
+
 }

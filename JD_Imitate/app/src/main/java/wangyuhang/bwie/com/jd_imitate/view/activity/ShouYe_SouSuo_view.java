@@ -23,10 +23,13 @@ import wangyuhang.bwie.com.jd_imitate.R;
 public class ShouYe_SouSuo_view extends RelativeLayout {
 
     final  int REQUEST_CODE = 8888;
-
+    //    public ShouYe_SouSuo_view(Context context, AttributeSet attrs) {
+    //        super(context, attrs);
+    //    }
+    //15:05
     public ShouYe_SouSuo_view(Context context) {
         this(context, null);
-    }
+}
 
     public ShouYe_SouSuo_view(Context context, @Nullable AttributeSet attrs) {
         this(context, attrs, 0);
@@ -47,8 +50,5 @@ public class ShouYe_SouSuo_view extends RelativeLayout {
         });
 
     }
-
-
-
 
 }

@@ -3,6 +3,7 @@ package wangyuhang.bwie.com.jd_imitate.view.activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -46,7 +47,7 @@ public class DingDanLieBiao extends BaseActivity<DingDanLieBiaoPresenter> implem
         List<DingDanBean.DataBean> data = dingDanBean.getData();
 //        data.get(0).get
         MyAdapter myAdapter = new MyAdapter(data,DingDanLieBiao.this);
-
+        mRclDingdan.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
         mRclDingdan.setAdapter(myAdapter);
 
     }

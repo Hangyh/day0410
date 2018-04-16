@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -36,6 +37,7 @@ public class Sou extends  BaseActivity {
     private ListView listView;
     private TextView textView;
     private ListView_Lisi listView_lisi;
+    private List<SqlBean> sele1;
 
     @Override
     public int getLayout() {
@@ -71,10 +73,16 @@ public class Sou extends  BaseActivity {
             @Override
             public void onClick(View v) {
                 sqlDao.delete();
-                List<SqlBean> sele1 = sqlDao.sele();
+                sele1 = sqlDao.sele();
                 listView_lisi = new ListView_Lisi(sele1,Sou.this);
                 listView.setAdapter(listView_lisi);
                 listView_lisi.notifyDataSetChanged();
+            }
+        });
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                editText.setText(sele.get(position).getName());
             }
         });
     }
@@ -88,7 +96,7 @@ public class Sou extends  BaseActivity {
         listView.setAdapter(listView_lisi);
         listView_lisi.notifyDataSetChanged();
         Intent intent = new Intent(Sou.this,SouShuoActivity.class);
-        intent.putExtra("et",s);
+        intent.putExtra("goodsname",s);
         startActivity(intent);
 
     }
@@ -96,6 +104,5 @@ public class Sou extends  BaseActivity {
     @Override
     public void getData() {
         super.getData();
-
     }
 }

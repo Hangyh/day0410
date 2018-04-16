@@ -100,7 +100,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
         edit = sharedPreferences.edit();
         edit.putInt("uid",loginBean.getData().getUid());
         edit.putString("token",loginBean.getData().getToken());
-//        edit.putString("uname",loginBean.getData().getNickname()+"");
+        edit.putString("uname",loginBean.getData().getNickname()+"");
         Log.i("TAG",loginBean.getData().getUid()+"");
         Log.i("TAG",loginBean.getData().getToken()+"");
         edit.commit();

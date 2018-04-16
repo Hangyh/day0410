@@ -6,10 +6,10 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
-
 import java.util.List;
 
 import wangyuhang.bwie.com.jd_imitate.R;
@@ -26,6 +26,7 @@ public class SheZhiActivity extends BaseActivity<ZhanshiDiziPresenter> implement
 
     ListView listView;
     private MyAdapter myAdapter;
+    private List<DiziBean.DataBean> data;
 
     @Override
     public Context context() {
@@ -39,7 +40,7 @@ public class SheZhiActivity extends BaseActivity<ZhanshiDiziPresenter> implement
 
     @Override
     public void zhanshiSuccess(DiziBean diziBean) {
-        List<DiziBean.DataBean> data = diziBean.getData();
+        data = diziBean.getData();
         myAdapter = new MyAdapter(data,SheZhiActivity.this);
         listView.setAdapter(myAdapter);
     }
@@ -66,7 +67,7 @@ public class SheZhiActivity extends BaseActivity<ZhanshiDiziPresenter> implement
         final EditText editText2 = view1.findViewById(R.id.et_name2);
         final EditText editText3 = view1.findViewById(R.id.et_mobile);
         new AlertDialog.Builder(SheZhiActivity.this)
-                .setTitle("添加标题")
+                .setTitle("添加收货地址")
                 .setView(view1)
                 .setPositiveButton("添加", new DialogInterface.OnClickListener() {
                     @Override
@@ -84,9 +85,10 @@ public class SheZhiActivity extends BaseActivity<ZhanshiDiziPresenter> implement
                             @Override
                             public void adddiziSuccess(AddBean addBean) {
 
-//                                Toast.makeText(SheZhiActivity.this, ""+addBean.getMsg(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SheZhiActivity.this, ""+addBean.getMsg(), Toast.LENGTH_SHORT).show();
 //                                Log.e("------------",addBean.getMsg());
-                                myAdapter.notifyDataSetChanged();
+//                                myAdapter.notifyDataSetChanged();
+                                presenter.zhanshiP("12574");
                             }
 
                             @Override
@@ -94,11 +96,35 @@ public class SheZhiActivity extends BaseActivity<ZhanshiDiziPresenter> implement
                                 return SheZhiActivity.this;
                             }
                         });
-                        addPresenter.addP("12574",s1,s2,s3);
+                        addPresenter.addP("12574",s1,s3,s2);
                     }
                 })
                 .create()
                 .show();
-
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                https://www.zhaoapi.cn/user/setAddr?uid=71&addrid=3&status=1
+                Toast.makeText(SheZhiActivity.this, "asdddadsasf", Toast.LENGTH_SHORT).show();
+//                Log.i("qqq","dsaasdasdasdasdadsas");
+//                int addrid = data.get(position).getAddrid();
+//
+//                OkHttpClient okHttpClient = new OkHttpClient();
+//                Request request = new Request.Builder()
+//                        .url("https://www.zhaoapi.cn/user/setAddr?uid=12574&addrid="+addrid)
+//                        .build();
+//                okHttpClient.newCall(request).enqueue(new Callback() {
+//                    @Override
+//                    public void onFailure(Call call, IOException e) {
+//                        Log.e("erro",e.getMessage());
+//                    }
+//
+//                    @Override
+//                    public void onResponse(Call call, Response response) throws IOException {
+//                        Log.i("Tag",response.body().string());
+//                    }
+//                });
+            }
+        });
     }
 }

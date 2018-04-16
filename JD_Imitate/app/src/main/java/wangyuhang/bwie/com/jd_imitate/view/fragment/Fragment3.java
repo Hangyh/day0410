@@ -3,6 +3,7 @@ package wangyuhang.bwie.com.jd_imitate.view.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -60,6 +61,7 @@ public class Fragment3 extends Fragment implements FenView,FenView2 {
         final List<FenLei.DataBean> data = fenLei.getData();
         final FenAdapter fenAdapter=new FenAdapter(getActivity(),data);
         mRlv.setAdapter(fenAdapter);
+//        mRlv.addItemDecoration(new DividerItemDecoration(getActivity(),DividerItemDecoration.VERTICAL));
         fenAdapter.setBianse(new FenAdapter.Bianse() {
             @Override
             public void bianse(int position) {

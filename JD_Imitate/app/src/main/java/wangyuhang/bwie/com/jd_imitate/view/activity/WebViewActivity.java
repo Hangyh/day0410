@@ -27,7 +27,7 @@ public class WebViewActivity extends AppCompatActivity {
     private WebView mWeb;
     private String source = "android";
     private String addcarurl = "https://www.zhaoapi.cn/product/addCart";
-    private String addGoods = "https://www.zhaoapi.cn/product/getOrders";
+    private String addGood = "https://www.zhaoapi.cn/product/getOrders";
     private int pid;
     private String price;
 
@@ -72,22 +72,8 @@ public class WebViewActivity extends AppCompatActivity {
             @JavascriptInterface
             @Override
             public void setaddGoods() {
-//                Toast.makeText(WebViewActivity.this, "sadada", Toast.LENGTH_SHORT).show();
-                OkHttpClient okHttpClient = new OkHttpClient();
-                Request request = new Request.Builder().url(addGoods+"?uid=12574&"+"price="+price).build();
-                okHttpClient.newCall(request).enqueue(new Callback() {
-                    @Override
-                    public void onFailure(Call call, IOException e) {
-                        Log.e("erro",e.getMessage());
-                    }
-
-                    @Override
-                    public void onResponse(Call call, Response response) throws IOException {
-
-//                        Log.i("addd",response.body().string());
-                        startActivity(new Intent(WebViewActivity.this,DingDanLieBiao.class));
-                    }
-                });
+                Toast.makeText(WebViewActivity.this, "sadada", Toast.LENGTH_SHORT).show();
+                addGoods();
 
             }
         },"jsCallJavaObj2");
@@ -100,6 +86,26 @@ public class WebViewActivity extends AppCompatActivity {
 //        mWeb.loadUrl(string);
 //        mWeb.evaluateJavascript();
     }
+
+    private void addGoods() {
+//        https://www.zhaoapi.cn/product/getOrders?source=android&uid=12574&price=0.01
+        OkHttpClient okHttpClient = new OkHttpClient();
+        Request request = new Request.Builder().url(addGood+"?token=android&uid=12574&"+"price="+price).build();
+        okHttpClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.e("erro",e.getMessage());
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+
+                Log.i("addd",response.body().string());
+                startActivity(new Intent(WebViewActivity.this,DingDanLieBiao.class));
+            }
+        });
+    }
+
     /**
      * Js調用Java接口
      */
@@ -111,12 +117,12 @@ public class WebViewActivity extends AppCompatActivity {
         void setaddGoods();
     }
     private  void setaddGoods() {
-        String jsCode="javascript:(function(){" +
+        String jsCode2="javascript:(function(){" +
                 "var btn=document.getElementById(\"directorderBtm\");" +
                 "btn.onclick=function(){" +
                 "window.jsCallJavaObj2.setaddGoods();" +
                 "}})()";
-        mWeb.loadUrl(jsCode);
+        mWeb.loadUrl(jsCode2);
     }
 //    add_cart_spec     addCartBtm   service-ok-btn directorderBtm
     private  void setWebImageClick() {

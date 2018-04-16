@@ -25,11 +25,6 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
 import wangyuhang.bwie.com.jd_imitate.R;
 import wangyuhang.bwie.com.jd_imitate.base.BaseActivity;
 import wangyuhang.bwie.com.jd_imitate.bean.UserBean;
@@ -40,8 +35,7 @@ import wangyuhang.bwie.com.jd_imitate.presenter.UsetPrensenter;
 import wangyuhang.bwie.com.jd_imitate.view.UpdateView;
 import wangyuhang.bwie.com.jd_imitate.view.UserView;
 
-import static wangyuhang.bwie.com.jd_imitate.R.drawable.s2;
-import static wangyuhang.bwie.com.jd_imitate.R.mipmap.s;
+
 
 
 public class UserActivity extends BaseActivity<UsetPrensenter> implements UserView,UploadUtil.OnUploadProcessListener {
@@ -92,12 +86,14 @@ public class UserActivity extends BaseActivity<UsetPrensenter> implements UserVi
         data = userBean.getData();
         final Object nickname = data.getNickname();
         final String username = data.getUsername();
+        final int icon = (int) data.getIcon();
 
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 mTvName.setText(username);
                 mTvUname.setText(nickname+"");
+                mIvTou.setImageResource(icon);
             }
         });
         mIvTou.setOnClickListener(new View.OnClickListener() {

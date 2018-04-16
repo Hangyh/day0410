@@ -16,6 +16,7 @@ import java.util.List;
 import wangyuhang.bwie.com.jd_imitate.R;
 import wangyuhang.bwie.com.jd_imitate.fenlei.activity.ZiFenLeiXiangQingActivity;
 import wangyuhang.bwie.com.jd_imitate.fenlei.bean.ErJiLieBiao;
+import wangyuhang.bwie.com.jd_imitate.view.activity.SouShuoActivity;
 
 
 /**
@@ -102,7 +103,7 @@ public class ErJiLieBiaoAdapter extends BaseExpandableListAdapter {
        }
             //绑定
         final List<ErJiLieBiao.DataBean.ListBean> list = data.get(groupPosition).getList();
-
+        final String name = list.get(groupPosition).getName();
         cViewHolder.rlv.setLayoutManager(new GridLayoutManager(context,3));
 
         MyAdaptera myAdaptera=new MyAdaptera(context,list);
@@ -114,9 +115,10 @@ public class ErJiLieBiaoAdapter extends BaseExpandableListAdapter {
                 Toast.makeText(context,""+pscid,Toast.LENGTH_LONG).show();
                 Intent intent=new Intent();
                 Bundle bundle=new Bundle();
+                bundle.putString("goodsname",name);
                 bundle.putString("id",pscid+"");
                 intent.putExtras(bundle);
-                intent.setClass(context, ZiFenLeiXiangQingActivity.class);
+                intent.setClass(context, SouShuoActivity.class);
                 context.startActivity(intent);
             }
         });
